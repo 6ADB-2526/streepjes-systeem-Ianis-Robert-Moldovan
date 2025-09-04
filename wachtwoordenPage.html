@@ -1,0 +1,416 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streepjes Systeem - Leerling Wachtwoorden</title>
+    <link rel="stylesheet" href="css/stylingAdmin.css" />
+    <style>
+      .password-section {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .password-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .password-item {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .student-name {
+        font-weight: bold;
+        color: #333;
+      }
+
+      .student-password {
+        font-family: "Courier New", monospace;
+        background: #e9ecef;
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: #495057;
+        font-weight: bold;
+      }
+
+      .class-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0 10px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .info-box {
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .print-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .print-btn:hover {
+        background: #218838;
+      }
+
+      @media print {
+        .header,
+        .print-btn,
+        .back-btn {
+          display: none;
+        }
+
+        .password-item {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Leerling Wachtwoorden</h1>
+      <div class="user-info">
+        <span id="teacherName">Welkom</span>
+        <button
+          onclick="window.location.href='adminPage.html'"
+          class="logout-btn">
+          Terug naar Dashboard
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="password-section">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          ">
+          <h2>Leerling Wachtwoorden Overzicht</h2>
+          <button onclick="window.print()" class="print-btn">
+            🖨️ Afdrukken
+          </button>
+        </div>
+
+        <div class="info-box">
+          <strong>📋 Instructies voor leerkrachten:</strong><br />
+          • Deze wachtwoorden zijn nodig voor leerlingen om in te loggen<br />
+          • Deel deze wachtwoorden alleen met de betreffende leerlingen<br />
+          • Bewaar deze lijst op een veilige plaats<br />
+          • Leerlingen kunnen hun eigen streepjes en minpunten bekijken met deze
+          wachtwoorden
+        </div>
+
+        <!-- Klas 1A -->
+        <div class="class-header">Klas 1A</div>
+        <div class="password-grid" id="class1A">
+          <!-- Wordt gevuld door JavaScript -->
+        </div>
+
+        <!-- Klas 1B -->
+        <div class="class-header">Klas 1B</div>
+        <div class="password-grid" id="class1B">
+          <!-- Wordt gevuld door JavaScript -->
+        </div>
+
+        <!-- Klas 2A -->
+        <div class="class-header">Klas 2A</div>
+        <div class="password-grid" id="class2A">
+          <!-- Wordt gevuld door JavaScript -->
+        </div>
+
+        <!-- Klas 2B -->
+        <div class="class-header">Klas 2B</div>
+        <div class="password-grid" id="class2B">
+          <!-- Wordt gevuld door JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Controleer of leerkracht is ingelogd
+      const currentTeacher = JSON.parse(localStorage.getItem("currentTeacher"));
+      if (!currentTeacher) {
+        window.location.href = "loginPage.html";
+      } else {
+        document.getElementById(
+          "teacherName"
+        ).textContent = `Welkom, ${currentTeacher.name}`;
+      }
+
+      // Wachtwoorden (gekopieerd uit leerling.js)
+      const studentPasswords = {
+        // Klas 1A
+        "Emma van der Berg": "emma2012",
+        "Liam Jansen": "liam2011",
+        "Sophie de Vries": "sophie2012",
+        "Noah Bakker": "noah2011",
+        "Olivia Smit": "olivia2012",
+        "Lucas van Dijk": "lucas2011",
+        "Mila Visser": "mila2012",
+        "Mason de Jong": "mason2011",
+        "Ava Mulder": "ava2012",
+        "Ethan Bos": "ethan2011",
+        "Isabella Peters": "isabella2012",
+        "Alexander Vos": "alexander2011",
+        "Amelia Groot": "amelia2012",
+        "Benjamin Kok": "benjamin2011",
+        "Charlotte Wit": "charlotte2012",
+        "Jacob van Leeuwen": "jacob2011",
+        "Mia Hendriks": "mia2012",
+        "Michael Brouwer": "michael2011",
+        "Abigail Dijkstra": "abigail2012",
+        "Daniel Meijer": "daniel2011",
+        "Emily van der Meer": "emily2012",
+        "Matthew Koning": "matthew2011",
+        "Elizabeth Dekker": "elizabeth2012",
+        "Anthony Jacobs": "anthony2011",
+        "Sofia Willems": "sofia2012",
+
+        // Klas 1B
+        "William de Boer": "william2011",
+        "Harper Vermeulen": "harper2012",
+        "James van den Berg": "james2011",
+        "Evelyn Schouten": "evelyn2012",
+        "Logan Hoekstra": "logan2011",
+        "Ella van der Laan": "ella2012",
+        "Sebastian Prins": "sebastian2011",
+        "Scarlett Huisman": "scarlett2012",
+        "Jack Blom": "jack2011",
+        "Madison Verhoeven": "madison2012",
+        "Owen Koster": "owen2011",
+        "Layla Martens": "layla2012",
+        "Luke Timmermans": "luke2011",
+        "Zoe van Vliet": "zoe2012",
+        "Wyatt Kuiper": "wyatt2011",
+        "Nora Roos": "nora2012",
+        "Henry Scholten": "henry2011",
+        "Lily Postma": "lily2012",
+        "Leo Mol": "leo2011",
+        "Hannah Bosman": "hannah2012",
+        "Gabriel Laan": "gabriel2011",
+        "Chloe Vink": "chloe2012",
+        "Carter Donker": "carter2011",
+
+        // Klas 2A
+        "Samuel Groen": "samuel2010",
+        "Zoey Zwart": "zoey2010",
+        "David Rood": "david2010",
+        "Natalie Wit": "natalie2010",
+        "Caleb Geel": "caleb2010",
+        "Audrey Blauw": "audrey2010",
+        "Joshua Paars": "joshua2010",
+        "Maya Roze": "maya2010",
+        "Andrew Oranje": "andrew2010",
+        "Leah Grijs": "leah2010",
+        "Christopher Bruin": "christopher2010",
+        "Aaliyah Zilver": "aaliyah2010",
+        "Joseph Goud": "joseph2010",
+        "Savannah Koper": "savannah2010",
+        "John Ijzer": "john2010",
+        "Brooklyn Steen": "brooklyn2010",
+        "Dylan Hout": "dylan2010",
+        "Bella Glas": "bella2010",
+        "Isaiah Papier": "isaiah2010",
+        "Claire Stof": "claire2010",
+        "Ryan Metaal": "ryan2010",
+        "Skylar Plastic": "skylar2010",
+        "Nathan Rubber": "nathan2010",
+        "Addison Leer": "addison2010",
+        "Ian Wol": "ian2010",
+        "Aubrey Zijde": "aubrey2010",
+        "Jaxon Katoen": "jaxon2010",
+
+        // Klas 2B
+        "Jeremiah Linnen": "jeremiah2010",
+        "Anna Fluweel": "anna2010",
+        "Jose Denim": "jose2010",
+        "Samantha Polyester": "samantha2010",
+        "Adam Nylon": "adam2010",
+        "Grace Lycra": "grace2010",
+        "Luis Spandex": "luis2010",
+        "Cora Viscose": "cora2010",
+        "Juan Modal": "juan2010",
+        "Ruby Bamboe": "ruby2010",
+        "Carson Hennep": "carson2010",
+        "Serenity Jute": "serenity2010",
+        "Dominic Vlas": "dominic2010",
+        "Autumn Ramie": "autumn2010",
+        "Jace Alpaca": "jace2010",
+        "Genesis Mohair": "genesis2010",
+        "Grayson Kasjmier": "grayson2010",
+        "Ariana Angora": "ariana2010",
+        "Colton Merino": "colton2010",
+        "Kinsley Lamswol": "kinsley2010",
+        "Easton Zijde": "easton2010",
+        "Peyton Satijn": "peyton2010",
+        "Nolan Chiffon": "nolan2010",
+        "Lydia Tule": "lydia2010",
+      };
+
+      // Klassendata
+      const classData = {
+        "1A": [
+          "Emma van der Berg",
+          "Liam Jansen",
+          "Sophie de Vries",
+          "Noah Bakker",
+          "Olivia Smit",
+          "Lucas van Dijk",
+          "Mila Visser",
+          "Mason de Jong",
+          "Ava Mulder",
+          "Ethan Bos",
+          "Isabella Peters",
+          "Alexander Vos",
+          "Amelia Groot",
+          "Benjamin Kok",
+          "Charlotte Wit",
+          "Jacob van Leeuwen",
+          "Mia Hendriks",
+          "Michael Brouwer",
+          "Abigail Dijkstra",
+          "Daniel Meijer",
+          "Emily van der Meer",
+          "Matthew Koning",
+          "Elizabeth Dekker",
+          "Anthony Jacobs",
+          "Sofia Willems",
+        ],
+        "1B": [
+          "William de Boer",
+          "Harper Vermeulen",
+          "James van den Berg",
+          "Evelyn Schouten",
+          "Logan Hoekstra",
+          "Ella van der Laan",
+          "Sebastian Prins",
+          "Scarlett Huisman",
+          "Jack Blom",
+          "Madison Verhoeven",
+          "Owen Koster",
+          "Layla Martens",
+          "Luke Timmermans",
+          "Zoe van Vliet",
+          "Wyatt Kuiper",
+          "Nora Roos",
+          "Henry Scholten",
+          "Lily Postma",
+          "Leo Mol",
+          "Hannah Bosman",
+          "Gabriel Laan",
+          "Chloe Vink",
+          "Carter Donker",
+        ],
+        "2A": [
+          "Samuel Groen",
+          "Zoey Zwart",
+          "David Rood",
+          "Natalie Wit",
+          "Caleb Geel",
+          "Audrey Blauw",
+          "Joshua Paars",
+          "Maya Roze",
+          "Andrew Oranje",
+          "Leah Grijs",
+          "Christopher Bruin",
+          "Aaliyah Zilver",
+          "Joseph Goud",
+          "Savannah Koper",
+          "John Ijzer",
+          "Brooklyn Steen",
+          "Dylan Hout",
+          "Bella Glas",
+          "Isaiah Papier",
+          "Claire Stof",
+          "Ryan Metaal",
+          "Skylar Plastic",
+          "Nathan Rubber",
+          "Addison Leer",
+          "Ian Wol",
+          "Aubrey Zijde",
+          "Jaxon Katoen",
+        ],
+        "2B": [
+          "Jeremiah Linnen",
+          "Anna Fluweel",
+          "Jose Denim",
+          "Samantha Polyester",
+          "Adam Nylon",
+          "Grace Lycra",
+          "Luis Spandex",
+          "Cora Viscose",
+          "Juan Modal",
+          "Ruby Bamboe",
+          "Carson Hennep",
+          "Serenity Jute",
+          "Dominic Vlas",
+          "Autumn Ramie",
+          "Jace Alpaca",
+          "Genesis Mohair",
+          "Grayson Kasjmier",
+          "Ariana Angora",
+          "Colton Merino",
+          "Kinsley Lamswol",
+          "Easton Zijde",
+          "Peyton Satijn",
+          "Nolan Chiffon",
+          "Lydia Tule",
+        ],
+      };
+
+      // Vul de wachtwoorden in
+      function populatePasswords() {
+        Object.keys(classData).forEach((className) => {
+          const container = document.getElementById(`class${className}`);
+          const students = classData[className];
+
+          students.forEach((studentName) => {
+            const password = studentPasswords[studentName];
+            const item = document.createElement("div");
+            item.className = "password-item";
+            item.innerHTML = `
+              <span class="student-name">${studentName}</span>
+              <span class="student-password">${password}</span>
+            `;
+            container.appendChild(item);
+          });
+        });
+      }
+
+      // Laad wachtwoorden bij het laden van de pagina
+      populatePasswords();
+    </script>
+  </body>
+</html>
