@@ -1,0 +1,89 @@
+/* Algemene styling */
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    text-align: center;
+}
+
+/* Login formulier */
+#LoginVeld {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.inputGroep {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.inputGroep label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.inputGroep input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.inputGroep input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #1a73e8;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #155bb5;
+}
+
+/* Foutmelding */
+.error-message {
+    margin-top: 15px;
+    color: #d93025;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fce8e6;
+    display: none;
+    /* Standaard verborgen */
+}

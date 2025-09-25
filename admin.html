@@ -1,0 +1,35 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streepjes Systeem - Admin</title>
+    <link rel="stylesheet" href="./styling/stylingAdmin.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="welcomeMessage">Welkom</h1>
+      <button id="logoutBtn" class="logout-btn">Uitloggen</button>
+    </div>
+
+    <div id="classSelection" class="class-selection">
+      <h2>Selecteer een klas</h2>
+      <div id="classGrid" class="class-grid"></div>
+    </div>
+
+    <div id="studentActions" class="student-list" style="display: none">
+      <div class="list-header">
+        <h2>Klas <span id="currentClassName"></span></h2>
+        <button id="backToClasses" class="back-btn">
+          ← Terug naar klassen
+        </button>
+      </div>
+      <div id="studentsContainer" class="students-container"></div>
+    </div>
+
+    <script src="./script/admin.js" type="module"></script>
+    <script src="./script/login.js" type="module"></script>
+  </body>
+</html>

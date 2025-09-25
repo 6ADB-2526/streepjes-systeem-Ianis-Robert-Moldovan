@@ -1,0 +1,61 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leerling</title>
+    <link rel="stylesheet" href="./styling/stylingLeerling.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <h1 id="studentDisplayName">Welkom</h1>
+        <button id="logoutBtn" class="logout-btn">Uitloggen</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="dashboard">
+        <div class="info-card">
+          <h2>Mijn Gegevens</h2>
+          <div class="student-info">
+            <p><strong>Naam:</strong> <span id="displayName"></span></p>
+            <p><strong>Klas:</strong> <span id="displayClass"></span></p>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <h2>Mijn Streepjes</h2>
+          <div class="streepjes-overview">
+            <div class="streepjes-count">
+              <span class="count-number" id="streepjesCount">0</span>
+              <span class="count-label">/ 3 Streepjes</span>
+            </div>
+            <div class="streepjes-visual" id="streepjesDisplay"></div>
+            <div class="streepjes-left">
+              Nog <span id="streepjesLeft">3</span> streepjes tot minpunt
+            </div>
+          </div>
+        </div>
+
+        <div class="minpunten-card">
+          <h2>Mijn Minpunten</h2>
+          <div class="minpunten-count">
+            <span class="count-number" id="minpuntenCount">0</span>
+            <span class="count-label">Minpunten</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2>Geschiedenis</h2>
+          <ul id="actionsHistory"></ul>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script/leerling.js" type="module"></script>
+    <script src="./script/login.js" type="module"></script>
+  </body>
+</html>
